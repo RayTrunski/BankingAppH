@@ -50,44 +50,50 @@ const MobileNav = ({ user }: MobileNavProps) => {
               Horizon{" "}
             </h1>
           </Link>
-          <div className="mobileNav-sheet">
-            <SheetClose render>
-              <nav className="flex h-full flex-col gap-6 pt-16 text-white">
-                {sidebarLinks.map((item) => {
-                  const isActive =
-                    pathname === item.route ||
-                    pathname.startsWith(`${item.route}/`);
+          <div className="mobilenav-sheet">
+            <nav className="flex h-full flex-col gap-6 px-5 pt-16 text-black-2">
+              {sidebarLinks.map((item) => {
+                const isActive =
+                  pathname === item.route ||
+                  pathname.startsWith(`${item.route}/`);
 
-                  return (
-                    <Link
-                      href={item.route}
-                      className={cn("sidebar-link", {
-                        "bg-bank-gradient": isActive,
-                      })}
-                      key={item.label}
-                    >
-                      <div className="relative size-6">
+                return (
+                  <SheetClose
+                    key={item.route}
+                    nativeButton={false}
+                    render={
+                      <Link
+                        href={item.route}
+                        className={cn("mobilenav-sheet_close w-full", {
+                          "bg-bank-gradient": isActive,
+                        })}
+                        key={item.label}
+                      >
                         <Image
                           src={item.imgURL}
                           alt={item.label}
-                          fill
+                          width={20}
+                          height={20}
                           className={cn({
                             "brightness-[3] invert-0": isActive,
                           })}
                         />
-                      </div>
-                      <p
-                        className={cn("sidebar-label", {
-                          "!text-white": isActive,
-                        })}
-                      >
-                        {item.label}
-                      </p>
-                    </Link>
-                  );
-                })}
-              </nav>
-            </SheetClose>
+
+                        <p
+                          className={cn("text-16 font-semibold text-black-2", {
+                            "text-white": isActive,
+                          })}
+                        >
+                          {item.label}
+                        </p>
+                      </Link>
+                    }
+                  ></SheetClose>
+                );
+              })}
+              USER
+              <footer>FOOTER</footer>
+            </nav>
           </div>
         </SheetContent>
       </Sheet>

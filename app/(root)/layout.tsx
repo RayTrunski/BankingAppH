@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  const loggedIn = { firstname: "Ray", lastname: "Saint" };
+  const loggedIn = { firstName: "Ray", lastName: "Saint" };
 
   return (
     <main className="flex h-screen w-full font-inter">
